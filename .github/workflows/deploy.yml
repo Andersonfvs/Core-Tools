@@ -7,7 +7,10 @@ on:
   schedule:
     # Agenda para rodar duas vezes ao dia: às 08:00 e às 14:00 no horário de Brasília (11:00 e 17:00 UTC)
     - cron: '0 11,17 * * *'
-  workflow_dispatch: # Permite rodar o deploy manualmente pelo painel do GitHub
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
 
 jobs:
   build-and-deploy:
@@ -15,9 +18,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          # Permite que o commit automático seja feito de volta para a branch
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -53,9 +53,6 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          # Pasta local que será enviada
           local-dir: ./out/
-          # Pasta destino no servidor Hostinger (subdomínio coretools)
           server-dir: ./public_html/coretools/
-          # Mantém arquivos antigos e apenas sobrescreve/adiciona novos
           dangerous-clean-slate: false
