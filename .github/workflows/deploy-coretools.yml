@@ -46,6 +46,9 @@ jobs:
           fi
 
       - name: Build Next.js Static Export
+        env:
+          NEXT_PUBLIC_WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_KEY }}
+          NEXT_PUBLIC_ADSENSE_PUB_ID: ${{ secrets.ADSENSE_PUB_ID }}
         run: npm run build
 
       - name: Deploy to Hostinger FTP
