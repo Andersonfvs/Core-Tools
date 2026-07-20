@@ -13,7 +13,7 @@ export default function Header() {
         </Link>
         
         {/* Navigation links */}
-        <nav className="flex gap-6 font-mono text-[11px] uppercase tracking-wider text-brand-muted">
+        <nav className="flex gap-3.5 sm:gap-6 font-mono text-[10px] sm:text-[11px] uppercase tracking-wider text-brand-muted">
           <Link href="/" className="hover:text-brand-text transition-colors">
             <DecodedText text="FERRAMENTAS" triggerOnLoad={false} />
           </Link>

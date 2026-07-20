@@ -32,8 +32,8 @@ export default function Footer() {
     <footer className="w-full border-t border-brand-border bg-black py-8 mt-auto z-10 font-mono text-[10px] text-zinc-500">
       <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
         {/* Left Side: Copyright and CRT Toggle */}
-        <div className="uppercase tracking-wider flex items-center gap-4">
-          <span>&copy; {currentYear} Antigravity // Processamento Local & Gratuito</span>
+        <div className="uppercase tracking-wider flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
+          <span>&copy; {currentYear} CoreTools // Processamento Local & Gratuito</span>
           <button
             onClick={toggleCrt}
             className="px-2 py-0.5 border border-brand-border text-zinc-500 hover:text-brand-accent hover:border-brand-accent/40 transition-colors uppercase text-[8px] cursor-pointer"
