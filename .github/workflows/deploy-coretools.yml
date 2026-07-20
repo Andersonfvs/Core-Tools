@@ -53,7 +53,9 @@ jobs:
         with:
           server: ${{ secrets.FTP_SERVER || '212.85.6.169' }}
           username: ${{ secrets.FTP_USERNAME || 'u135751739' }}
-          password: ${{ secrets.FTP_PASSWORD }}
+          password: ${{ secrets.FTP_PASSWORD || 'CoreTools2026!' }}
+          port: 21
+          protocol: ftp
           local-dir: ./out/
           server-dir: ./public_html/coretools/
           dangerous-clean-slate: false
