@@ -66,9 +66,11 @@ jobs:
           protocol: ftp
           security: loose
           local-dir: ./out/
-          server-dir: ./public_html/coretools/
-          # SEGURO: server-dir aponta para a pasta dedicada do CoreTools.
-          # clean-slate apaga/recria APENAS o conteudo de coretools/ a cada deploy
-          # (o WordPress em public_html/ NAO e afetado). Resolve o erro FTP 550
-          # causado pela sincronizacao incremental quando muda o build id.
-          dangerous-clean-slate: true
+          # CAMINHO ABSOLUTO REAL da pasta servida (diagnostico ftp-diagnose.js 2026-07-20):
+          # o FTP loga em /public_html, e a pasta servida do subdominio e
+          # /public_html/public_html/coretools. O antigo ./public_html/coretools caia numa
+          # pasta-fantasma /public_html/coretools (nao servida). NAO mexer sem re-diagnosticar.
+          server-dir: /public_html/public_html/coretools/
+          # clean-slate desligado: deploy nao-destrutivo (sobrescreve no lugar, nao apaga o
+          # site se algo falhar). Religar so depois de confirmar que grava no lugar certo.
+          dangerous-clean-slate: false
