@@ -32,7 +32,7 @@ Escreva um novo artigo 100% autoral, técnico e de alto valor que será publicad
 REGRAS CRÍTICAS DE CONTEÚDO:
 1. O assunto deve girar em torno de desenvolvimento web, performance de sites, compressão de imagens, formatos de compressão de arquivos (como zip, rar, tar, gzip), segurança local de dados (client-side privacy), cookies de consentimento, LGPD ou otimização do Core Web Vitals do Google.
 2. Evite repetir os temas dos artigos já existentes: [${existingTopics}].
-3. O artigo deve ser longo, detalhado e explicativo (mínimo de 600 palavras).
+3. O artigo deve ser muito longo, detalhado e aprofundado (mínimo de 800 a 1000 palavras).
 4. O conteúdo deve ser estruturado e retornado em formato JSON correspondendo exatamente à estrutura descrita abaixo.
 5. Em "content", inclua parágrafos longos explicativos. Se desejar quebrar o texto com subtítulos, adicione strings começando com "### ". Se desejar adicionar listas de pontos, use o prefixo "- ".
 6. O texto deve ser escrito em Português do Brasil com excelente fluidez e tom profissional. O artigo deve terminar obrigatoriamente com uma seção de Perguntas Frequentes (FAQ) detalhando 2 ou 3 dúvidas comuns em formato de subtítulos "### " seguido de parágrafos.
