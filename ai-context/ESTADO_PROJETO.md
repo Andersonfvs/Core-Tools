@@ -8,7 +8,7 @@ Site estático (Next.js 16 `output: export`) de utilitários que rodam 100% no n
 
 - **No ar:** https://coretools.fvsynapse.com.br
 - **Repo:** github.com/Andersonfvs/Core-Tools (público) · branch `main`
-- **Local:** `C:\Users\ander\.gemini\antigravity\scratch\antigravity-utilities`
+- **Local:** `C:\Users\ander\CoreTools`
 
 ## Ferramentas
 | Rota | Função | Engine |
@@ -44,6 +44,9 @@ curl -s -o /dev/null -w '%{http_code}' \
 
 ## AdSense — não submeter ainda
 Precisa: ~15 artigos 1000+ palavras + 2-3 semanas no ar. Hoje: 5 artigos bons. Recusa suja o domínio.
+
+## ⚠️ BLOQUEIO ABERTO: cache do servidor (2026-07-20)
+Site congelado em snapshot `Last-Modified: 12:06:34 UTC` apesar de deploys verdes com clean-slate para 3 destinos (212.85.6.169, 212.85.3.229 public_html/coretools, e domains/.../public_html). Arquivos apagados/reenviados não mudam nada no ar; `next.svg` deletado ainda responde 200; cache-buster `?b=` não fura. **Conclusão: cache LiteSpeed/Hostinger fixado.** Resolução (só no hPanel): **Avançado → Gerenciador de Cache / Cache Manager → Limpar/Purge**, ou plugin LiteSpeed Cache do WordPress → Purge All. FTP correto = `212.85.3.229` (srv725). Após purge, rodar o teste de hash pra confirmar.
 
 ## Incidentes resolvidos (2026-07-20)
 1. Senha FTP vazada em texto puro no repo público (Antigravity) → trocada.
