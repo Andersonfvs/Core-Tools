@@ -51,11 +51,12 @@ jobs:
       - name: Deploy to Hostinger FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER || '212.85.6.169' }}
-          username: ${{ secrets.FTP_USERNAME || 'u135751739' }}
+          server: 212.85.6.169
+          username: u135751739
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
           protocol: ftp
+          security: false
           local-dir: ./out/
           server-dir: ./public_html/coretools/
           dangerous-clean-slate: false
