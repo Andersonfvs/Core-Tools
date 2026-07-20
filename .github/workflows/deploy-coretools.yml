@@ -1,9 +1,10 @@
-name: CoreTools CI/CD Pipeline
+name: CoreTools Production Pipeline
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch: {}
 
 jobs:
   build-and-deploy:
