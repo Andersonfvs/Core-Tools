@@ -14,7 +14,7 @@ jobs:
       - run: npm ci
       - name: Diagnosticar landing do FTP
         env:
-          FTP_SERVER: 212.85.3.229
+          FTP_SERVER: 212.85.6.169
           FTP_USERNAME: u135751739
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: node scripts/ftp-diagnose.js
