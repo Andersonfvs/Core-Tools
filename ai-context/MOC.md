@@ -14,6 +14,6 @@ Ponto de entrada da documentação. Leia nesta ordem:
 ## Resumo de 30 segundos
 - **Site:** https://coretools.fvsynapse.com.br — **NO AR e funcionando** (subido manualmente).
 - **Projeto local:** `C:\Users\ander\CoreTools` · **Repo:** github.com/Andersonfvs/Core-Tools (branch `main`).
-- **Deploy por FTP está QUEBRADO** (defeito Hostinger, provado). Publicação = upload manual do zip OU (em configuração) o Git nativo da Hostinger.
+- **Deploy: AUTOMÁTICO via Git nativo da Hostinger** ✅ — `push no main` → site atualiza sozinho (~1-2 min). O FTP está quebrado (não usar); backup é upload manual do zip. Ver [[DEPLOY]].
 - **AdSense:** NÃO pedir ainda (precisa ~15 artigos + tempo no ar).
 - **Anderson quer ficar na Hostinger, NÃO migrar.** Respeitar isso.

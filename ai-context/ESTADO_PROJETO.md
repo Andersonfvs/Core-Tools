@@ -45,5 +45,5 @@ Esses 3 servidores diferentes são a raiz do problema de deploy (ver [[DEPLOY]])
 - ✅ Código, SEO técnico, conteúdo: prontos e no GitHub.
 - ✅ Site no ar (subida manual), design e tudo funcionando.
 - ✅ Segurança: senha FTP trocada; `ruvector.db` e SVGs de template removidos.
-- ⚠️ Deploy automático: FTP quebrado. **Em configuração: Git nativo da Hostinger** (ver [[PROXIMOS_PASSOS]]).
+- ✅ Deploy automático FUNCIONANDO via Git nativo da Hostinger (`push no main` → site atualiza sozinho). FTP quebrado, não usar. Ver [[DEPLOY]].
 - 🔴 AdSense: não pedir ainda (ver [[SEO_ADSENSE]]).
