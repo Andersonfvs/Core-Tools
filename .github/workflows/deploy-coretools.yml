@@ -66,7 +66,9 @@ jobs:
           protocol: ftp
           security: loose
           local-dir: ./out/
-          server-dir: ./public_html/coretools/
+          # Docroot REAL do subdominio coretools.fvsynapse.com.br na Hostinger (site
+          # adicionado como separado usa domains/<dominio>/public_html, NAO public_html/coretools).
+          server-dir: ./domains/coretools.fvsynapse.com.br/public_html/
           # SEGURO: server-dir aponta para a pasta dedicada do CoreTools.
           # clean-slate apaga/recria APENAS o conteudo de coretools/ a cada deploy
           # (o WordPress em public_html/ NAO e afetado). Resolve o erro FTP 550
