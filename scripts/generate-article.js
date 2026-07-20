@@ -63,22 +63,17 @@ ESTRUTURA DE SAÍDA JSON ESPERADA:
 Retorne APENAS o JSON válido. Não adicione markdown como \`\`\`json no início ou no fim, retorne o JSON cru estruturado.
 `;
 
-// Lista de autores fictícios com alto padrão E-E-A-T
+// Lista de autores reais (E-E-A-T autêntico)
 const authors = [
   {
     name: "Anderson Ventura",
-    role: "Especialista em Performance Web",
-    bio: "Engenheiro de software e analista de SEO técnico, focado no desenvolvimento de ferramentas client-side eficientes."
+    role: "Fundador & Engenheiro de Software",
+    bio: "Desenvolvedor responsável pelo CoreTools Utilities, focado em alta performance web, utilitários client-side e privacidade."
   },
   {
-    name: "Juliana Mendes",
-    role: "Arquiteta de Soluções & Privacidade",
-    bio: "Especialista em segurança da informação, privacidade de dados corporativos e arquiteturas serverless locais."
-  },
-  {
-    name: "Marcos Ribeiro",
-    role: "Consultor de Performance Core Web Vitals",
-    bio: "Especialista em SEO e otimização de velocidade de carregamento de páginas móveis."
+    name: "Redação CoreTools",
+    role: "Equipe Editorial Técnica",
+    bio: "Equipe especializada em análise de performance web, padrões de segurança e otimização de imagens."
   }
 ];
 

@@ -13,18 +13,21 @@ export default function AdSenseBanner({
   format = "auto",
   responsive = "true",
 }: AdSenseBannerProps) {
+  const publisherId = process.env.NEXT_PUBLIC_ADSENSE_PUB_ID;
+
   useEffect(() => {
-    // Run AdSense push in browser environment
+    if (!publisherId || publisherId.includes("XXXXXXXX")) return;
     try {
-      const adsbygoogle = (window as any).adsbygoogle || [];
-      adsbygoogle.push({});
+      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
     } catch (e) {
       // Squelch errors if AdSense script is blocked or not loaded yet
     }
-  }, []);
+  }, [publisherId]);
 
-  // Use a real client ID from environment variables or a placeholder fallback
-  const publisherId = process.env.NEXT_PUBLIC_ADSENSE_PUB_ID || "ca-pub-XXXXXXXXXXXXXXXX";
+  // Se não houver ID real do AdSense configurado, omitir o bloco para não exibir marcas de placeholder aos revisores
+  if (!publisherId || publisherId.includes("XXXXXXXX")) {
+    return null;
+  }
 
   return (
     <div className="w-full flex flex-col items-center my-6">

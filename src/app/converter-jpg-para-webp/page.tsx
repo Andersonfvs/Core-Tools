@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import JpgConverterClient from "@/components/JpgConverterClient";
 
 export const metadata: Metadata = {
-  title: "Converter JPG para WebP Grátis Online - Antigravity Utilities",
+  title: "Converter JPG para WebP Grátis Online - CoreTools Utilities",
   description:
     "Comprima e converta imagens JPG ou JPEG para formato WebP inteligente 100% no seu navegador. Otimização de SEO, velocidade e redução de até 80% do tamanho.",
   keywords: [
@@ -18,7 +18,7 @@ export default function JpgConverterPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "Conversor WebP Inteligente Antigravity - JPG para WebP",
+    "name": "Conversor WebP Inteligente CoreTools - JPG para WebP",
     "operatingSystem": "All",
     "applicationCategory": "UtilityApplication",
     "offers": {

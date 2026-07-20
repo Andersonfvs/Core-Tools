@@ -46,19 +46,16 @@ export default async function ArticlePage({ params }: Props) {
     "@type": "TechArticle",
     "headline": article.title,
     "description": article.summary,
-    "datePublished": article.dateISO || new Date().toISOString(),
+    "datePublished": article.dateISO || "2026-07-19",
     "author": {
       "@type": "Person",
-      "name": article.author?.name || "Redação CoreTools",
-      "jobTitle": article.author?.role || "Especialista Técnico"
+      "name": article.author?.name || "Anderson Ventura",
+      "jobTitle": article.author?.role || "Fundador & Desenvolvedor"
     },
     "publisher": {
       "@type": "Organization",
       "name": "CoreTools",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://coretools.fvsynapse.com.br/next.svg"
-      }
+      "url": "https://coretools.fvsynapse.com.br"
     }
   };
 

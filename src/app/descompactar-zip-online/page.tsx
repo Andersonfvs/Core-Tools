@@ -18,7 +18,7 @@ export default function ZipExtractorPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "Descompactador ZIP Client-Side Antigravity",
+    "name": "Descompactador ZIP Client-Side CoreTools",
     "operatingSystem": "All",
     "applicationCategory": "UtilityApplication",
     "offers": {

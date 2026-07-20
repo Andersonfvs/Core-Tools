@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import PngConverterClient from "@/components/PngConverterClient";
 
 export const metadata: Metadata = {
-  title: "Como Converter PNG para WebP Grátis Online - Antigravity Utilities",
+  title: "Como Converter PNG para WebP Grátis Online - CoreTools Utilities",
   description:
     "Converta imagens PNG para WebP em lote instantaneamente. Processamento 100% local no navegador para máxima segurança e privacidade. Ideal para otimização de sites.",
   keywords: [
@@ -18,7 +18,7 @@ export default function PngConverterPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "Conversor WebP Inteligente Antigravity - PNG para WebP",
+    "name": "Conversor WebP Inteligente CoreTools - PNG para WebP",
     "operatingSystem": "All",
     "applicationCategory": "UtilityApplication",
     "offers": {

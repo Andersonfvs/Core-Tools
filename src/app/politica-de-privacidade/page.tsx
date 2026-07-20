@@ -1,6 +1,5 @@
 import React from "react";
 import type { Metadata } from "next";
-import AdSenseBanner from "@/components/AdSenseBanner";
 
 export const metadata: Metadata = {
   title: "Política de Privacidade - CoreTools // Utilities",

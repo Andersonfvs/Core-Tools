@@ -138,7 +138,7 @@ export default function Home() {
 
       {/* Footer Status Bar */}
       <footer className="mt-20 w-full border-t border-brand-border pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-mono text-zinc-500">
-        <div className="uppercase tracking-wider">Antigravity // All processing is client-side</div>
+        <div className="uppercase tracking-wider">CoreTools // All processing is client-side</div>
         <div className="flex items-center gap-2">
           <span>HOST: STATIC EDGE</span>
           <span className="text-zinc-700">|</span>

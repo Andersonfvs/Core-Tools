@@ -18,7 +18,7 @@ export default function RarExtractorPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "Descompactador RAR WebAssembly Antigravity",
+    "name": "Descompactador RAR WebAssembly CoreTools",
     "operatingSystem": "All",
     "applicationCategory": "UtilityApplication",
     "offers": {

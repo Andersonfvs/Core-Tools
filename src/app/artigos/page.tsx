@@ -5,7 +5,7 @@ import AdSenseBanner from "@/components/AdSenseBanner";
 import { ARTICLES } from "@/data/articles";
 
 export const metadata: Metadata = {
-  title: "Artigos Técnicos de Otimização e Performance - Antigravity",
+  title: "Artigos Técnicos de Otimização e Performance - CoreTools",
   description:
     "Explore guias, análises e artigos técnicos originais sobre velocidade de carregamento web, compressão de imagens WebP e segurança client-side.",
   robots: {

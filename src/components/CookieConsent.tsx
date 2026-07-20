@@ -18,7 +18,8 @@ export default function CookieConsent() {
 
   const loadAdSense = () => {
     if (document.getElementById("adsense-script")) return;
-    const pubId = process.env.NEXT_PUBLIC_ADSENSE_PUB_ID || "ca-pub-XXXXXXXXXXXXXXXX";
+    const pubId = process.env.NEXT_PUBLIC_ADSENSE_PUB_ID;
+    if (!pubId || pubId.includes("XXXXXXXX")) return;
     const script = document.createElement("script");
     script.id = "adsense-script";
     script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${pubId}`;

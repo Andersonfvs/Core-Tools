@@ -18,8 +18,27 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CoreTools // Utilities",
-  description: "Conversor inteligente de imagens WebP e descompactador ZIP/RAR local. Processamento rápido de dados de arquivos no navegador.",
+  metadataBase: new URL("https://coretools.fvsynapse.com.br"),
+  title: {
+    default: "CoreTools // Utilitários Locais & Processamento no Navegador",
+    template: "%s - CoreTools",
+  },
+  description: "Conversor inteligente de imagens WebP e descompactador ZIP/RAR local. Processamento rápido e seguro de dados de arquivos inteiramente no seu navegador.",
+  alternates: {
+    canonical: "./",
+  },
+  openGraph: {
+    title: "CoreTools // Utilitários Locais & Processamento no Navegador",
+    description: "Conversor WebP e descompactador ZIP/RAR local. Ferramentas gratuitas com 100% de privacidade client-side.",
+    url: "https://coretools.fvsynapse.com.br",
+    siteName: "CoreTools Utilities",
+    locale: "pt_BR",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
