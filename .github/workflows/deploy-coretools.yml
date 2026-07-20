@@ -12,9 +12,13 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -31,12 +35,12 @@ jobs:
         run: |
           if [ -n "$GEMINI_API_KEY" ]; then
             echo "🚀 Gerando artigo diário de 1000+ palavras com IA..."
-            node scripts/generate-article.js
+            node scripts/generate-article.js || echo "Aviso: Falha ao gerar artigo por IA, mantendo artigos existentes."
             git config --local user.email "action@github.com"
             git config --local user.name "GitHub Action Bot"
             git add src/data/articles.json
             git commit -m "chore(auto-article): publicar novo artigo diário [skip ci]" || echo "Sem novos artigos para comitar"
-            git push origin main || echo "Push ignorado"
+            git push origin main || echo "Aviso: Não foi possível fazer push no repositório, mas o deploy estático continuará normalmente."
           else
             echo "⚠️ GEMINI_API_KEY não configurada nos Secrets. Pulando geração automática."
           fi
