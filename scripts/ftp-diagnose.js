@@ -1,52 +1,44 @@
-// Diagnostico de FTP: descobre ONDE a conta FTP realmente cai ao logar,
-// e o que existe nas pastas candidatas. A senha vem de env (secret do GitHub),
-// nunca fica no codigo.
+// Diagnostico 2: localiza deploy-test.txt e index.html em TODAS as pastas
+// candidatas para descobrir qual e a pasta REALMENTE servida vs onde o deploy escreve.
 const ftp = require("basic-ftp");
 
-async function listSafe(client, path) {
+async function probe(client, path) {
   try {
     const items = await client.list(path);
-    return items
-      .map((f) => `  ${f.isDirectory ? "[dir] " : "      "}${f.name}` + (f.isDirectory ? "" : `  (${f.size}b)`) + `  ${f.rawModifiedAt || ""}`)
-      .join("\n") || "  (vazio)";
+    const marker = items.find((f) => f.name === "deploy-test.txt");
+    const index = items.find((f) => f.name === "index.html");
+    return `EXISTE | deploy-test.txt: ${marker ? "SIM (" + marker.rawModifiedAt + ")" : "nao"} | index.html: ${index ? index.size + "b " + index.rawModifiedAt : "nao"} | itens: ${items.length}`;
   } catch (e) {
-    return `  ERRO: ${e.message}`;
+    return `nao acessivel (${e.message.split("\n")[0]})`;
   }
 }
 
 async function main() {
   const client = new ftp.Client(30000);
   client.ftp.verbose = false;
-  const host = process.env.FTP_SERVER;
   try {
     await client.access({
-      host,
+      host: process.env.FTP_SERVER,
       user: process.env.FTP_USERNAME,
       password: process.env.FTP_PASSWORD,
       secure: false,
       port: 21,
     });
-    console.log(`\n===== CONECTADO em ${host} como ${process.env.FTP_USERNAME} =====`);
-
-    const pwd = await client.pwd();
-    console.log(`\n>>> DIRETORIO ONDE O FTP CAI AO LOGAR (pwd): ${pwd}`);
-
-    console.log(`\n>>> CONTEUDO DA RAIZ DO LOGIN ("."):`);
-    console.log(await listSafe(client, "."));
-
-    console.log(`\n>>> CONTEUDO DE "public_html":`);
-    console.log(await listSafe(client, "public_html"));
-
-    console.log(`\n>>> CONTEUDO DE "public_html/coretools" (deve bater com o site no ar):`);
-    console.log(await listSafe(client, "public_html/coretools"));
-
-    console.log(`\n>>> EXISTE pasta "domains"?`);
-    console.log(await listSafe(client, "domains"));
-
-    console.log(`\n>>> EXISTE "public_html/public_html" (jaula duplicada)?`);
-    console.log(await listSafe(client, "public_html/public_html"));
-
-    console.log("\n===== FIM DO DIAGNOSTICO =====\n");
+    console.log(`\n>>> pwd: ${await client.pwd()}\n`);
+    const candidatas = [
+      "coretools",
+      "public_html/coretools",
+      "public_html/public_html/coretools",
+      "/public_html/public_html/coretools",
+      "/public_html/coretools",
+      "domains/coretools.fvsynapse.com.br",
+      "domains/coretools.fvsynapse.com.br/public_html",
+      "domains/coretools.fvsynapse.com.br/public_html/coretools",
+    ];
+    for (const p of candidatas) {
+      console.log(`[${p}] -> ${await probe(client, p)}`);
+    }
+    console.log("\n>>> FIM");
   } catch (err) {
     console.error("FALHA:", err.message);
     process.exit(1);
