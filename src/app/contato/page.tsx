@@ -1,0 +1,138 @@
+"use client";
+
+import React, { useState } from "react";
+
+export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [sent, setSent] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) {
+      setErrorMsg("ERRO // CAMPO_OBRIGATORIO_VAZIO");
+      return;
+    }
+    
+    // Simulate email transmission
+    setSent(true);
+    setErrorMsg("");
+    setSuccess(false);
+
+    setTimeout(() => {
+      setSuccess(true);
+      setSent(false);
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    }, 800);
+  };
+
+  return (
+    <main className="flex-grow max-w-2xl mx-auto px-6 py-12 font-mono text-xs text-brand-muted leading-relaxed w-full">
+      <div className="relative border border-brand-border p-8 bg-brand-panel/20">
+        <span className="absolute top-1 left-2 text-zinc-700 select-none">[Contact]</span>
+        <span className="absolute bottom-1 right-2 text-zinc-700 select-none">[Form]</span>
+
+        <h1 className="font-sans text-2xl font-black text-brand-text uppercase mb-2 tracking-wide">
+          Fale Conosco
+        </h1>
+        <p className="text-zinc-500 mb-6">
+          Dúvidas, sugestões ou suporte técnico? Preencha o formulário abaixo.
+        </p>
+
+        {/* Inline Feedback Alerts instead of ugly browser popups */}
+        {success && (
+          <div className="mb-6 p-4 border border-brand-accent bg-brand-accent/5 text-brand-accent animate-flicker">
+            <span className="block font-bold uppercase mb-1">STATUS: TRANSMISSION_OK // MESSAGE_RECEIVED</span>
+            <p className="text-[10px] text-zinc-400">
+              Sua mensagem foi enviada com sucesso para o nosso canal de suporte. Responderemos em breve.
+            </p>
+          </div>
+        )}
+
+        {errorMsg && (
+          <div className="mb-6 p-4 border border-red-500/50 bg-red-500/5 text-red-400 font-bold uppercase">
+            {errorMsg}
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-zinc-400 uppercase text-[9px] mb-1.5 font-bold">
+              Nome Completo *
+            </label>
+            <input
+              type="text"
+              required
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              className="w-full bg-black border border-brand-border px-3 py-2 text-brand-text focus:outline-none focus:border-brand-accent rounded-none"
+              placeholder="Seu nome"
+            />
+          </div>
+
+          <div>
+            <label className="block text-zinc-400 uppercase text-[9px] mb-1.5 font-bold">
+              Endereço de E-mail *
+            </label>
+            <input
+              type="email"
+              required
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className="w-full bg-black border border-brand-border px-3 py-2 text-brand-text focus:outline-none focus:border-brand-accent rounded-none"
+              placeholder="seu.email@provedor.com"
+            />
+          </div>
+
+          <div>
+            <label className="block text-zinc-400 uppercase text-[9px] mb-1.5 font-bold">
+              Assunto
+            </label>
+            <input
+              type="text"
+              value={formData.subject}
+              onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+              className="w-full bg-black border border-brand-border px-3 py-2 text-brand-text focus:outline-none focus:border-brand-accent rounded-none"
+              placeholder="Ex: Sugestão de utilitário"
+            />
+          </div>
+
+          <div>
+            <label className="block text-zinc-400 uppercase text-[9px] mb-1.5 font-bold">
+              Mensagem *
+            </label>
+            <textarea
+              required
+              rows={5}
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              className="w-full bg-black border border-brand-border px-3 py-2 text-brand-text focus:outline-none focus:border-brand-accent rounded-none resize-y"
+              placeholder="Digite sua mensagem aqui..."
+            />
+          </div>
+
+          <div className="pt-2">
+            <button
+              type="submit"
+              disabled={sent}
+              className="w-full py-2.5 btn-tactile-accent uppercase text-xs tracking-wider font-bold cursor-pointer disabled:opacity-50"
+            >
+              {sent ? "Transmitindo..." : "Enviar Mensagem"}
+            </button>
+          </div>
+        </form>
+
+        <div className="mt-8 border-t border-brand-border/60 pt-6 text-[10px] text-zinc-500">
+          <span className="block uppercase text-zinc-600 mb-1">Contato direto via e-mail:</span>
+          <span className="text-brand-text font-bold">contato@fvsynapse.com.br</span>
+        </div>
+      </div>
+    </main>
+  );
+}
