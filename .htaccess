@@ -1,0 +1,27 @@
+# Apache Configuration for Next.js Static Export
+# For clean URLs without .html and proper index resolution
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Redirect trailing slash to non-trailing slash (except directories)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} (.+)/$
+  RewriteRule ^ %1 [L,R=301]
+
+  # Serve the actual file if it exists
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # Clean URLs: Map /route to /route.html if it exists
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(.*)$ /$1.html [L]
+
+  # Clean URLs: Map /route to /route/index.html if it exists
+  RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+  RewriteRule ^(.*)$ /$1/index.html [L]
+
+  # Custom 404 page fallback
+  ErrorDocument 404 /404.html
+</IfModule>

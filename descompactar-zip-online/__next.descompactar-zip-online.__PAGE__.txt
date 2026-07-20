@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[44214,["/_next/static/chunks/35bb6t5ao8le9.js","/_next/static/chunks/14mrh2-p_w84d.js","/_next/static/chunks/2_k-omh1d0pd_.js","/_next/static/chunks/3o5mukxn5_746.js"],"default"]
+3:I[97367,["/_next/static/chunks/35bb6t5ao8le9.js","/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"SoftwareApplication\",\"name\":\"Descompactador ZIP Client-Side CoreTools\",\"operatingSystem\":\"All\",\"applicationCategory\":\"UtilityApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"},\"featureList\":[\"Extração local instantânea com biblioteca fflate\",\"Leitura da árvore de arquivos e diretórios sem download completo\",\"Sem limite de tamanho por rodar na RAM local\",\"Segurança corporativa sem upload para a nuvem\"]}"}}],["$","$L2",null,{}]],[["$","script","script-0",{"src":"/_next/static/chunks/2_k-omh1d0pd_.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/3o5mukxn5_746.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"bWMTTQZTTvFh8rnLT1SAc"}
+5:null

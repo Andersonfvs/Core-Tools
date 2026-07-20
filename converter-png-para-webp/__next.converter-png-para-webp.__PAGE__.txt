@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[47971,["/_next/static/chunks/35bb6t5ao8le9.js","/_next/static/chunks/14mrh2-p_w84d.js","/_next/static/chunks/0epbojahu3997.js","/_next/static/chunks/3-zn4o9eom__-.js"],"default"]
+3:I[97367,["/_next/static/chunks/35bb6t5ao8le9.js","/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"SoftwareApplication\",\"name\":\"Conversor WebP Inteligente CoreTools - PNG para WebP\",\"operatingSystem\":\"All\",\"applicationCategory\":\"UtilityApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"},\"featureList\":[\"Processamento 100% Client-Side\",\"Conversão adaptativa de qualidade de 75% a 85%\",\"Execução em Web Workers em lote\",\"Download unificado em arquivo ZIP\"]}"}}],["$","$L2",null,{}]],[["$","script","script-0",{"src":"/_next/static/chunks/0epbojahu3997.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/3-zn4o9eom__-.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"bWMTTQZTTvFh8rnLT1SAc"}
+5:null

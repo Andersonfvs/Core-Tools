@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[61009,["/_next/static/chunks/35bb6t5ao8le9.js","/_next/static/chunks/14mrh2-p_w84d.js","/_next/static/chunks/21oef67lhqkj9.js","/_next/static/chunks/3o5mukxn5_746.js"],"default"]
+3:I[97367,["/_next/static/chunks/35bb6t5ao8le9.js","/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"SoftwareApplication\",\"name\":\"Descompactador RAR WebAssembly CoreTools\",\"operatingSystem\":\"All\",\"applicationCategory\":\"UtilityApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"},\"featureList\":[\"Processamento local sandbox via WebAssembly unrar.cpp\",\"Suporte a formatos de arquivos RAR v4 e v5\",\"Carregamento dinâmico deferido do binário WASM\",\"Visualização e download de itens individuais\"]}"}}],["$","$L2",null,{}]],[["$","script","script-0",{"src":"/_next/static/chunks/21oef67lhqkj9.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/3o5mukxn5_746.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"bWMTTQZTTvFh8rnLT1SAc"}
+5:null
