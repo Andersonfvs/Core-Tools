@@ -2,6 +2,12 @@
 
 import React, { useState } from "react";
 
+// Chave do Web3Forms. Enquanto nao estiver configurada (via NEXT_PUBLIC_WEB3FORMS_KEY),
+// o formulario e ocultado e exibimos apenas o e-mail direto — evitando um form "fantasma"
+// que aceita envios mas nao entrega nada (bloqueador de revisao do AdSense).
+const WEB3FORMS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+const FORM_ENABLED = Boolean(WEB3FORMS_KEY && !WEB3FORMS_KEY.includes("YOUR_ACCESS_KEY"));
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -19,7 +25,7 @@ export default function ContactPage() {
       setErrorMsg("ERRO // CAMPO_OBRIGATORIO_VAZIO");
       return;
     }
-    
+
     setSent(true);
     setErrorMsg("");
     setSuccess(false);
@@ -32,7 +38,7 @@ export default function ContactPage() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "YOUR_ACCESS_KEY_HERE",
+          access_key: WEB3FORMS_KEY,
           name: formData.name,
           email: formData.email,
           subject: formData.subject || "Contato - CoreTools",
@@ -64,11 +70,13 @@ export default function ContactPage() {
           Fale Conosco
         </h1>
         <p className="text-zinc-500 mb-6">
-          Dúvidas, sugestões ou suporte técnico? Preencha o formulário abaixo.
+          {FORM_ENABLED
+            ? "Dúvidas, sugestões ou suporte técnico? Preencha o formulário abaixo."
+            : "Dúvidas, sugestões ou suporte técnico? Fale com a gente pelo e-mail abaixo."}
         </p>
 
         {/* Inline Feedback Alerts instead of ugly browser popups */}
-        {success && (
+        {FORM_ENABLED && success && (
           <div className="mb-6 p-4 border border-brand-accent bg-brand-accent/5 text-brand-accent animate-flicker">
             <span className="block font-bold uppercase mb-1">STATUS: TRANSMISSION_OK // MESSAGE_RECEIVED</span>
             <p className="text-[10px] text-zinc-400">
@@ -77,12 +85,13 @@ export default function ContactPage() {
           </div>
         )}
 
-        {errorMsg && (
+        {FORM_ENABLED && errorMsg && (
           <div className="mb-6 p-4 border border-red-500/50 bg-red-500/5 text-red-400 font-bold uppercase">
             {errorMsg}
           </div>
         )}
 
+        {FORM_ENABLED && (
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-zinc-400 uppercase text-[9px] mb-1.5 font-bold">
@@ -149,10 +158,16 @@ export default function ContactPage() {
             </button>
           </div>
         </form>
+        )}
 
         <div className="mt-8 border-t border-brand-border/60 pt-6 text-[10px] text-zinc-500">
           <span className="block uppercase text-zinc-600 mb-1">Contato direto via e-mail:</span>
-          <span className="text-brand-text font-bold">contato@fvsynapse.com.br</span>
+          <a
+            href="mailto:contato@fvsynapse.com.br"
+            className="text-brand-accent font-bold hover:underline"
+          >
+            contato@fvsynapse.com.br
+          </a>
         </div>
       </div>
     </main>

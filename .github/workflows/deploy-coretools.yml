@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - main
-  schedule:
-    - cron: '0 11 * * *' # 08:00 BRT (11:00 UTC)
-    - cron: '0 17 * * *' # 14:00 BRT (17:00 UTC)
+  # Geracao de artigo por IA roda SOMENTE quando disparada manualmente
+  # (Actions > Run workflow), permitindo revisao humana antes de publicar.
+  # Cron automatico foi removido para evitar "scaled content abuse" (politica Google).
   workflow_dispatch: {}
 
 jobs:
@@ -29,7 +29,7 @@ jobs:
         run: npm ci
 
       - name: Generate New Daily Article (If GEMINI_API_KEY exists)
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        if: github.event_name == 'workflow_dispatch'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
@@ -59,4 +59,4 @@ jobs:
           security: loose
           local-dir: ./out/
           server-dir: ./public_html/coretools/
-          dangerous-clean-slate: true
+          dangerous-clean-slate: false
