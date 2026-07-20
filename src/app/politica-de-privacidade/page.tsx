@@ -3,11 +3,11 @@ import type { Metadata } from "next";
 import AdSenseBanner from "@/components/AdSenseBanner";
 
 export const metadata: Metadata = {
-  title: "Política de Privacidade - Antigravity // Utilities",
+  title: "Política de Privacidade - CoreTools // Utilities",
   description:
-    "Política de privacidade do Antigravity Utilities. Conheça as políticas de cookies, privacidade e o processamento local (client-side) dos nossos utilitários.",
+    "Política de privacidade do CoreTools Utilities. Conheça as políticas de cookies, privacidade e o processamento local (client-side) dos nossos utilitários.",
   robots: {
-    index: false,
+    index: true,
     follow: true,
   },
 };
@@ -34,7 +34,7 @@ export default function PrivacyPolicyPage() {
               1. Processamento Local (Client-Side)
             </h2>
             <p>
-              O **Antigravity // Utilities** foi desenvolvido sob o princípio da privacidade por padrão (*privacy by design*). Todos os utilitários disponíveis no site — incluindo o Conversor WebP e os descompactadores ZIP e RAR — processam dados exclusivamente no seu dispositivo (computador, tablet ou celular). 
+              O <strong>CoreTools // Utilities</strong> foi desenvolvido sob o princípio da privacidade por padrão (*privacy by design*). Todos os utilitários disponíveis no site — incluindo o Conversor WebP e os descompactadores ZIP e RAR — processam dados exclusivamente no seu dispositivo (computador, tablet ou celular). 
             </p>
             <p className="mt-2 font-bold text-brand-accent">
               Nenhum arquivo enviado por você é transmitido, armazenado, copiado ou analisado em nossos servidores. O processamento binário ocorre inteiramente na memória RAM do seu próprio navegador.
@@ -53,15 +53,12 @@ export default function PrivacyPolicyPage() {
             </p>
           </section>
 
-          {/* Ad placement safe distance */}
-          <AdSenseBanner slot="1234567890" />
-
           <section>
             <h2 className="font-sans text-sm font-bold text-brand-text uppercase tracking-wider mb-2 border-b border-brand-border pb-1">
-              3. Logs de Servidor e Analytics
+              3. Logs de Servidor e Análise Anônima
             </h2>
             <p>
-              Nosso site utiliza o Cloudflare Web Analytics, um sistema de análise focado em privacidade que não coleta cookies, informações de rastreamento pessoal ou impressões digitais de navegadores. Apenas monitoramos dados agregados e anônimos de tráfego, como número de visitantes, país de origem e tipo de dispositivo, com o objetivo de otimizar a performance técnica da plataforma.
+              Nosso servidor de hospedagem pode coletar dados de log básicos e anônimos (como volume de tráfego, número de visitas e tipo de navegador) com o objetivo exclusivo de garantir a segurança técnica, a estabilidade e a integridade da plataforma. Não rastreamos informações pessoais dos usuários nem utilizamos cookies analíticos invasivos.
             </p>
           </section>
 

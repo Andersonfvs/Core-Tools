@@ -46,7 +46,7 @@ export default function AboutPage() {
 
         <div className="space-y-5 text-justify">
           <p>
-            O **CoreTools // Utilities** nasceu com a missão de simplificar tarefas cotidianas da web de forma limpa, direta e, acima de tudo, segura. Percebemos que a maioria das ferramentas online para tarefas simples (como converter formatos de imagem ou descompactar arquivos) exige que o usuário envie seus dados particulares para servidores de terceiros.
+            O <strong>CoreTools // Utilities</strong> nasceu com a missão de simplificar tarefas cotidianas da web de forma limpa, direta e, acima de tudo, segura. Percebemos que a maioria das ferramentas online para tarefas simples (como converter formatos de imagem ou descompactar arquivos) exige que o usuário envie seus dados particulares para servidores de terceiros.
           </p>
           
           <p>

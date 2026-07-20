@@ -3,7 +3,7 @@ import { MetadataRoute } from "next";
 export const dynamic = "force-static";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://antigravity-utilities.pages.dev";
+  const baseUrl = "https://coretools.fvsynapse.com.br";
   return {
     rules: {
       userAgent: "*",

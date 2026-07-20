@@ -13,23 +13,45 @@ export default function ContactPage() {
   const [success, setSuccess] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
       setErrorMsg("ERRO // CAMPO_OBRIGATORIO_VAZIO");
       return;
     }
     
-    // Simulate email transmission
     setSent(true);
     setErrorMsg("");
     setSuccess(false);
 
-    setTimeout(() => {
-      setSuccess(true);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "YOUR_ACCESS_KEY_HERE",
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject || "Contato - CoreTools",
+          message: formData.message,
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSuccess(true);
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setErrorMsg("ERRO // FALHA_NO_ENVIO: " + (result.message || "Erro de chave de acesso ou servidor"));
+      }
+    } catch (err) {
+      setErrorMsg("ERRO // FALHA_CONEXAO_REDE");
+    } finally {
       setSent(false);
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 800);
+    }
   };
 
   return (

@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!article) return {};
 
   return {
-    title: `${article.title} - Antigravity`,
+    title: `${article.title} - CoreTools`,
     description: article.summary,
     robots: {
       index: true,
@@ -41,8 +41,35 @@ export default async function ArticlePage({ params }: Props) {
     notFound();
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": article.title,
+    "description": article.summary,
+    "datePublished": article.dateISO || new Date().toISOString(),
+    "author": {
+      "@type": "Person",
+      "name": article.author?.name || "Redação CoreTools",
+      "jobTitle": article.author?.role || "Especialista Técnico"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "CoreTools",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://coretools.fvsynapse.com.br/next.svg"
+      }
+    }
+  };
+
   return (
     <main className="flex-grow max-w-3xl mx-auto px-6 py-12 w-full relative z-10 font-mono text-xs">
+      {/* Schema.org Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Navigation */}
       <div className="w-full flex justify-start mb-8">
         <Link
@@ -69,8 +96,12 @@ export default async function ArticlePage({ params }: Props) {
           {article.title}
         </h1>
 
-        <div className="text-zinc-500 mb-8 text-[10px]">
-          Publicado em {article.date} // S-Synapse Insights
+        <div className="text-zinc-500 mb-8 text-[10px] flex flex-wrap items-center gap-x-2 gap-y-1">
+          <span>Publicado em {article.date}</span>
+          <span className="text-zinc-700">|</span>
+          <span>Por {article.author?.name || "Redação CoreTools"}</span>
+          <span className="text-zinc-700">|</span>
+          <span>CoreTools Editorial</span>
         </div>
 
         {/* Article Paragraphs */}

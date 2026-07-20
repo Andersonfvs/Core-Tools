@@ -23,8 +23,8 @@ export default function AdSenseBanner({
     }
   }, []);
 
-  // Use a mock client ID that the user can replace in a global config or env variable later
-  const publisherId = "ca-pub-XXXXXXXXXXXXXXXX"; // Substituir pelo ID real do AdSense
+  // Use a real client ID from environment variables or a placeholder fallback
+  const publisherId = process.env.NEXT_PUBLIC_ADSENSE_PUB_ID || "ca-pub-XXXXXXXXXXXXXXXX";
 
   return (
     <div className="w-full flex flex-col items-center my-6">
@@ -32,7 +32,7 @@ export default function AdSenseBanner({
         Anúncio
       </span>
       
-      <div className="w-full min-h-[90px] md:min-h-[100px] border border-brand-border bg-brand-panel/30 flex items-center justify-center relative overflow-hidden">
+      <div className="w-full min-h-[90px] md:min-h-[100px] bg-transparent flex items-center justify-center relative">
         {/* AdSense Slot */}
         <ins
           className="adsbygoogle"
@@ -42,13 +42,6 @@ export default function AdSenseBanner({
           data-ad-format={format}
           data-full-width-responsive={responsive}
         />
-        
-        {/* Visual Technical Placeholder for draft and crawler check */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-40 border border-dashed border-zinc-900 bg-brand-panel/10">
-          <span className="font-mono text-[9px] text-zinc-500 tracking-wider">
-            [ BLOCO DE ANÚNCIO: {slot} ]
-          </span>
-        </div>
       </div>
     </div>
   );

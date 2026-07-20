@@ -4,7 +4,7 @@ import { ARTICLES } from "@/data/articles";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://antigravity-utilities.pages.dev";
+  const baseUrl = "https://coretools.fvsynapse.com.br";
   
   // Base utility pages
   const baseRoutes = [

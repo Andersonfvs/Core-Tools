@@ -8,17 +8,35 @@ export default function CookieConsent() {
 
   useEffect(() => {
     // Check if user already consented
-    const consent = localStorage.getItem("antigravity-cookie-consent");
+    const consent = localStorage.getItem("coretools-cookie-consent");
     if (!consent) {
       setShowBanner(true);
+    } else if (consent === "accepted") {
+      loadAdSense();
     }
   }, []);
 
+  const loadAdSense = () => {
+    if (document.getElementById("adsense-script")) return;
+    const pubId = process.env.NEXT_PUBLIC_ADSENSE_PUB_ID || "ca-pub-XXXXXXXXXXXXXXXX";
+    const script = document.createElement("script");
+    script.id = "adsense-script";
+    script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${pubId}`;
+    script.async = true;
+    script.setAttribute("crossorigin", "anonymous");
+    document.head.appendChild(script);
+  };
+
   const handleAccept = () => {
-    localStorage.setItem("antigravity-cookie-consent", "accepted");
+    localStorage.setItem("coretools-cookie-consent", "accepted");
     setShowBanner(false);
-    
-    // Dynamically reload window or trigger AdSense script activation if needed
+    loadAdSense();
+  };
+
+  const handleDecline = () => {
+    localStorage.setItem("coretools-cookie-consent", "declined");
+    setShowBanner(false);
+    // Reload page to make sure any active trackers are flushed
     window.location.reload();
   };
 
@@ -32,16 +50,22 @@ export default function CookieConsent() {
           <span className="text-brand-accent font-bold uppercase block mb-1">Aviso de Cookies & Consentimento</span>
           <p>
             Utilizamos cookies para personalizar anúncios do Google AdSense e analisar nosso tráfego de forma anônima. 
-            Ao clicar em &quot;Aceitar&quot;, você concorda com o uso de cookies em conformidade com nossa{" "}
+            Ao clicar em &quot;Aceitar Todos&quot;, você concorda com o uso de cookies em conformidade com nossa{" "}
             <Link href="/politica-de-privacidade" className="text-brand-text hover:text-brand-accent underline">
               Política de Privacidade
             </Link>{" "}
-            e a LGPD.
+            e a LGPD. Você pode optar por navegar recusando os cookies.
           </p>
         </div>
 
-        {/* Action Button */}
-        <div className="shrink-0">
+        {/* Action Buttons */}
+        <div className="flex gap-2 shrink-0 w-full sm:w-auto justify-end">
+          <button
+            onClick={handleDecline}
+            className="px-4 py-2 btn-tactile uppercase text-[10px] font-bold tracking-wider cursor-pointer"
+          >
+            Recusar
+          </button>
           <button
             onClick={handleAccept}
             className="px-5 py-2 btn-tactile-accent uppercase text-[10px] font-bold tracking-wider cursor-pointer"

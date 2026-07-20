@@ -2,11 +2,11 @@ import React from "react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Termos de Uso - Antigravity // Utilities",
+  title: "Termos de Uso - CoreTools // Utilities",
   description:
-    "Termos de uso do portal Antigravity Utilities. Conheça as regras de uso livre e isenções de responsabilidade de processamento local.",
+    "Termos de uso do portal CoreTools Utilities. Conheça as regras de uso livre e isenções de responsabilidade de processamento local.",
   robots: {
-    index: false,
+    index: true,
     follow: true,
   },
 };
@@ -32,7 +32,7 @@ export default function TermsOfUsePage() {
               1. Aceitação dos Termos
             </h2>
             <p>
-              Ao acessar e utilizar o portal **Antigravity // Utilities**, você concorda em cumprir e estar vinculado aos seguintes Termos de Uso. Caso não concorde com qualquer parte destes termos, você não deve utilizar nossas ferramentas.
+              Ao acessar e utilizar o portal <strong>CoreTools // Utilities</strong>, você concorda em cumprir e estar vinculado aos seguintes Termos de Uso. Caso não concorde com qualquer parte destes termos, você não deve utilizar nossas ferramentas.
             </p>
           </section>
 
