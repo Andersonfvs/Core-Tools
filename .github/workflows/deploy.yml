@@ -5,8 +5,8 @@ on:
     branches:
       - main
   schedule:
-    # Agenda para rodar todo dia às 11:00 UTC (08:00 no horário de Brasília)
-    - cron: '0 11 * * *'
+    # Agenda para rodar duas vezes ao dia: às 08:00 e às 20:00 no horário de Brasília (11:00 e 23:00 UTC)
+    - cron: '0 11,23 * * *'
   workflow_dispatch: # Permite rodar o deploy manualmente pelo painel do GitHub
 
 jobs:
