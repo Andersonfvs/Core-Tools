@@ -5,16 +5,15 @@ on:
     branches:
       - main
   schedule:
-    # Agenda para rodar duas vezes ao dia: às 08:00 e às 14:00 no horário de Brasília (11:00 e 17:00 UTC)
-    - cron: '0 11,17 * * *'
+    - cron: '0 11 * * *'
+    - cron: '0 17 * * *'
   workflow_dispatch: {}
-
-permissions:
-  contents: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
