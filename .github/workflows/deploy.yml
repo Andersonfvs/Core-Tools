@@ -1,0 +1,61 @@
+name: CoreTools CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    # Agenda para rodar todo dia às 11:00 UTC (08:00 no horário de Brasília)
+    - cron: '0 11 * * *'
+  workflow_dispatch: # Permite rodar o deploy manualmente pelo painel do GitHub
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          # Permite que o commit automático seja feito de volta para a branch
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      # Executa o gerador de artigos APENAS se for o disparo por cron (agendado) ou manual
+      - name: Generate Daily Article
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: npm run generate-article
+
+      # Salva o artigo gerado de volta no repositório GitHub para não perder o histórico
+      - name: Commit Generated Article
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "auto: publicar artigo diário gerado por IA"
+          file_pattern: 'src/data/articles.json'
+
+      - name: Build Next.js Static Export
+        run: npm run build
+
+      # Envia os arquivos gerados na pasta /out para a Hostinger via FTP
+      - name: Deploy to Hostinger FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Pasta local que será enviada
+          local-dir: ./out/
+          # Pasta destino no servidor Hostinger (subdomínio coretools)
+          server-dir: ./public_html/coretools/
+          # Mantém arquivos antigos e apenas sobrescreve/adiciona novos
+          dangerous-clean-slate: false
