@@ -26,7 +26,21 @@
 - **VAI (só o conteúdo de `out/`):** `index.html`, `404.html`, `sitemap.xml`, `favicon.ico`, `unrar.wasm`, `robots.txt`, e as pastas `_next`, `artigos`, `contato`, `sobre`, `converter-*`, `descompactar-*`, `abrir-*`, `politica-*`, `termos-*`.
 - **NÃO VAI (nunca):** `src`, `node_modules`, `.github`, `.next`, `ai-context`, `scripts`, `public`, `package.json`, configs, `ruvector.db`, etc.
 
-## 🚀 Solução em configuração: Git nativo da Hostinger (100% Hostinger, sem migrar)
+## ✅✅ SOLUÇÃO ATIVA E FUNCIONANDO: Git nativo da Hostinger (auto-deploy)
+**Configurado e CONFIRMADO funcionando em 2026-07-20.** Fluxo automático:
+`push no main` → GitHub Action `build-deploy-branch.yml` compila e publica o `out/` no branch **`deploy`** → **Hostinger puxa o branch `deploy` sozinha** → site atualiza. **SEM FTP, SEM zip, SEM clicar em nada.** (Provado com marcador `auto-test.txt` que apareceu no ar sozinho após um push.)
+
+Config na Hostinger (hPanel → painel do coretools → Avançado → GIT):
+- Repositório: **Core-Tools** (o app GitHub da Hostinger tem acesso liberado a ele).
+- Branch (Filial): **`deploy`** (NÃO main — main é fonte, deploy é o site compilado).
+- Diretório raiz: **`public_html/coretools`** (a pasta servida; NÃO `public_html` puro, que é o WordPress!).
+- Auto-deploy: ativo (webhook automático via GitHub App).
+
+**Para atualizar o site agora: só dar push no `main`. Pronto.** O upload manual do zip virou backup de emergência.
+
+Se precisar re-conectar: liberar acesso do app Hostinger ao repo em github.com/settings/installations (app "Hostinger" → Configure → Repository access → add Core-Tools).
+
+## 🚀 (Histórico) Como foi configurado o Git nativo da Hostinger
 O Git da Hostinger (**hPanel → Painel de controle do coretools → Avançado → GIT**) roda **no servidor da Hostinger**, então alcança a pasta servida (diferente do FTP). Ele só faz `git pull`, **não compila**. Por isso:
 
 - Criamos o workflow **`.github/workflows/build-deploy-branch.yml`**: a cada push no `main`, ele compila e publica o `out/` no branch **`deploy`** (site pronto na raiz), via `peaceiris/actions-gh-pages`.
