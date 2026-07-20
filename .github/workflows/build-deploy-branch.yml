@@ -1,0 +1,44 @@
+name: Build para branch deploy (Hostinger Git)
+
+# Compila o site e publica o conteudo de out/ no branch "deploy".
+# O branch "deploy" contem o SITE PRONTO na raiz (index.html, _next, etc.),
+# para o Git nativo da Hostinger (que so faz git pull, sem build) servir direto.
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install
+        run: npm ci
+
+      - name: Build Next.js Static Export
+        env:
+          NEXT_PUBLIC_WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_KEY }}
+          NEXT_PUBLIC_ADSENSE_PUB_ID: ${{ secrets.ADSENSE_PUB_ID }}
+        run: npm run build
+
+      - name: Publicar out/ no branch deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          publish_branch: deploy
+          force_orphan: true
+          commit_message: "deploy: site compilado para Hostinger Git"
