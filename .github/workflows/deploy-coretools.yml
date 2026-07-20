@@ -62,4 +62,8 @@ jobs:
           security: loose
           local-dir: ./out/
           server-dir: ./public_html/coretools/
-          dangerous-clean-slate: false
+          # SEGURO: server-dir aponta para a pasta dedicada do CoreTools.
+          # clean-slate apaga/recria APENAS o conteudo de coretools/ a cada deploy
+          # (o WordPress em public_html/ NAO e afetado). Resolve o erro FTP 550
+          # causado pela sincronizacao incremental quando muda o build id.
+          dangerous-clean-slate: true
