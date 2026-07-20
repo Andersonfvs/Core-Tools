@@ -1,12 +1,11 @@
 name: CoreTools Production & Article Automation Pipeline
 
+# ATENCAO: o deploy por FTP NAO alcanca a pasta que o site serve (defeito de
+# configuracao da conta Hostinger, provado em 2026-07-20). Enquanto nao migrar
+# para Cloudflare Pages OU criar uma conta FTP scoped ao docroot, o deploy roda
+# em vao. Por isso removi o gatilho de push (nao adianta rodar a cada commit).
+# Atualizacao real do site = upload manual do zip pelo file manager do hPanel.
 on:
-  push:
-    branches:
-      - main
-  # Geracao de artigo por IA roda SOMENTE quando disparada manualmente
-  # (Actions > Run workflow), permitindo revisao humana antes de publicar.
-  # Cron automatico foi removido para evitar "scaled content abuse" (politica Google).
   workflow_dispatch: {}
 
 jobs:
