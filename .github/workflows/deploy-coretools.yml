@@ -54,7 +54,11 @@ jobs:
       - name: Deploy to Hostinger FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: 212.85.6.169
+          # Servidor atual onde coretools.fvsynapse.com.br e servido (srv725 / 2.57.91.36).
+          # O IP antigo 212.85.6.169 era de um servidor pre-migracao: o deploy "sucedia"
+          # mas gravava numa copia fantasma que o site nunca lia. NAO reverter sem checar
+          # o IP web real: curl -s -4 -o /dev/null -w '%{remote_ip}' https://coretools.fvsynapse.com.br/
+          server: 2.57.91.36
           username: u135751739
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21

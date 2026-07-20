@@ -13,7 +13,7 @@ async function main() {
     process.exit(1);
   }
 
-  const hostsToTry = ["212.85.6.169", "ftp.fvsynapse.com.br"];
+  const hostsToTry = ["2.57.91.36", "212.85.6.169", "ftp.fvsynapse.com.br"];
   let connected = false;
 
   for (const host of hostsToTry) {
