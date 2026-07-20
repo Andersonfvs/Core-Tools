@@ -66,11 +66,11 @@ jobs:
           protocol: ftp
           security: loose
           local-dir: ./out/
-          # CAMINHO ABSOLUTO REAL da pasta servida (diagnostico ftp-diagnose.js 2026-07-20):
-          # o FTP loga em /public_html, e a pasta servida do subdominio e
-          # /public_html/public_html/coretools. O antigo ./public_html/coretools caia numa
-          # pasta-fantasma /public_html/coretools (nao servida). NAO mexer sem re-diagnosticar.
-          server-dir: /public_html/public_html/coretools/
+          # DOCROOT REAL do subdominio (provado por marcador em ftp-diagnose.js 2026-07-20):
+          # coretools.fvsynapse.com.br foi criado como site separado -> serve de
+          # domains/coretools.fvsynapse.com.br/public_html. As pastas coretools e
+          # public_html/coretools sao copias-fantasma nao servidas. NAO mexer sem re-diagnosticar.
+          server-dir: domains/coretools.fvsynapse.com.br/public_html/
           # clean-slate desligado: deploy nao-destrutivo (sobrescreve no lugar, nao apaga o
           # site se algo falhar). Religar so depois de confirmar que grava no lugar certo.
           dangerous-clean-slate: false
