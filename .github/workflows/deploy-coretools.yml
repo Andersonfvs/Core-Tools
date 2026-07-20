@@ -59,4 +59,4 @@ jobs:
           security: loose
           local-dir: ./out/
           server-dir: ./public_html/coretools/
-          dangerous-clean-slate: false
+          dangerous-clean-slate: true
